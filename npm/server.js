@@ -28,6 +28,17 @@ const PORT = process.env.PORT || 3000;
 //we create a server
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
+    //serving the files
+    let paths;
+    if (req.url ==='/' || req.url === 'index.html'){
+        res.statusCode = 200; // which means successful
+        res.setHeader('Content-Type', 'text/html');
+        paths = path.join(__dirname, 'views', 'index.html')
+        fs.readFile(paths, 'utf8', (err, data) => {
+            res.end(data)
+        })
+
+    }
 });
 
 server.listen(PORT, () => console.log(`server running on Port ${PORT}`))
