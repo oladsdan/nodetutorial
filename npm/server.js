@@ -25,6 +25,21 @@ const myEmitter = new Emitter();
 
 /** we define the port */
 const PORT = process.env.PORT || 3000;
+
+/** we Defining a function to Servefile */
+const serveFile = async (filePath, contentType, response) => {
+    try {
+        const data = await fsPromises.readFile(filePath, 'utf8');
+        response.writeHead(200, {'Content-Type': contentType})
+        response.end(data);
+
+    } catch(err){
+        console.log(err);
+        response.statusCode = 500;
+        response.end();
+    }
+}
+
 //we create a server
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
@@ -89,10 +104,7 @@ const server = http.createServer((req, res) => {
     const fileExists = fs.existsSync(filePath);
     
     if(fileExists){
-        res.writeHead(200, {'Location': `${filePath}`});
-        res.end();
-        console.log(filePath)
-
+       serveFile(filePath, contentType, res);
     } else {
         //404
         // redirect
