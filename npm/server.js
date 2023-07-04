@@ -29,9 +29,13 @@ const PORT = process.env.PORT || 3000;
 /** we Defining a function to Servefile */
 const serveFile = async (filePath, contentType, response) => {
     try {
-        const data = await fsPromises.readFile(filePath, 'utf8');
+        const rawData = await fsPromises.readFile(filePath, 'utf8');
+        //checking the type of data
+        const data = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
         response.writeHead(200, {'Content-Type': contentType})
-        response.end(data);
+        response.end(
+            contentType === 'application/json' ? JSON.stringify(data) : data
+        );
 
     } catch(err){
         console.log(err);
@@ -86,7 +90,7 @@ const server = http.createServer((req, res) => {
             contentType = 'text/html';
 
     }
-        //defined a chain ternary statements
+        //defined a chain ternary statements to determine the file to use
     let filePath =
         contentType === 'text/html' && req.url === '/'
             ? path.join(__dirname, 'views', 'index.html')
@@ -108,7 +112,7 @@ const server = http.createServer((req, res) => {
     } else {
         //404
         // redirect
-        console.log(path.parse(filePath))
+        // console.log(path.parse(filePath))
         //using the switch statements
         switch (path.parse(filePath).base) {
             case 'old-page.html':
@@ -121,6 +125,7 @@ const server = http.createServer((req, res) => {
                 break;
             default:
             //serve a 404 response
+                    serveFile(path.join(__dirname, 'views', '404.html'), 'text/html', res);
         }
 
     }
