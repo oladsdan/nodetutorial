@@ -14,15 +14,14 @@ class Emitter extends eventEmitter {};
 const myEmitter = new Emitter();
 
 // //now lets listen for the log events
-// myEmitter.on('log', (msg) => logEvents(msg));
+
 
 // //we set a timout just to see
 
 // setTimeout(() => {
 //     //Emit event
-//     myEmitter.emit('log', 'Log event emitted!');
 // }, 2000);
-
+myEmitter.on('log', (msg, fileName) => logEvents(msg, fileName));
 /** we define the port */
 const PORT = process.env.PORT || 3000;
 
@@ -35,24 +34,27 @@ const serveFile = async (filePath, contentType, response) => {
         const data = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
         response.writeHead(filePath.includes('404.html') ? 404 : 200,
              {'Content-Type': contentType})
-        response.end(
-            contentType === 'application/json' ? JSON.stringify(data) : data
-        );
-
-    } catch(err){
-        console.log(err);
-        response.statusCode = 500;
-        response.end();
-    }
-}
-
-//we create a server
+             response.end(
+                 contentType === 'application/json' ? JSON.stringify(data) : data
+                 );
+                 
+                } catch(err){
+                    console.log(err);
+                    myEmitter.emit('log', `${err.name}\t${err.message}`,'errLog.txt');
+                    response.statusCode = 500;
+                    response.end();
+                }
+            }
+            
+            //we create a server
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
+    myEmitter.emit('log', `${req.url}\t${req.method}`,'reqLog.txt');
+    
     //serving the files
     // let paths;
     // if (req.url ==='/' || req.url === 'index.html'){
-    //     res.statusCode = 200; // which means successful
+        //     res.statusCode = 200; // which means successful
     //     res.setHeader('Content-Type', 'text/html');
     //     paths = path.join(__dirname, 'views', 'index.html')
     //     fs.readFile(paths, 'utf8', (err, data) => {
