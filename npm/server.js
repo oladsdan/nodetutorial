@@ -29,7 +29,8 @@ const PORT = process.env.PORT || 3000;
 /** we Defining a function to Servefile */
 const serveFile = async (filePath, contentType, response) => {
     try {
-        const rawData = await fsPromises.readFile(filePath, 'utf8');
+        const rawData = await fsPromises.readFile(filePath,
+            !contentType.includes('image') ? 'utf8' : ''); // for the ability to parse images
         //checking the type of data
         const data = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
         response.writeHead(200, {'Content-Type': contentType})
