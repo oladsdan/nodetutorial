@@ -26,7 +26,7 @@ const corsOptions = {
     optionsSuccessStatus:200
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 //Built in middleware to enable urlencoded data
 //in other words, form data
@@ -60,6 +60,11 @@ app.get('/old-page', (req, res) => {
 //we can do a default route to supply a custom 404
 app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+})
+// using a custom error
+app.use(function (err, req, res, next){
+    console.error(err.stack)
+    res.status(500).send(err.message); //server errror
 })
 
 app.listen(PORT, () => console.log(`server running on Port ${PORT}`))
