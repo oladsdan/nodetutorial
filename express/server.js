@@ -3,6 +3,12 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
+//custom middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`)
+    next();
+})
+
 
 //Built in middleware to enable urlencoded data
 //in other words, form data
@@ -11,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 //built-in middleware for json
 app.use(express.json());
 
-//serve static files
+//serve static files eg css, images, txt
 app.use(express.static(path.join(__dirname, '/public')));
 
 

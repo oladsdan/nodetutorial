@@ -11,8 +11,8 @@ const logEvents = async (message, logName) => {
     console.log(logItem);
     try {
         //since we cant find the directory we check for it
-        if(!fs.existsSync(path.join(__dirname, 'logs'))){
-            await fsPromises.mkdir(path.join(__dirname, 'logs'));
+        if(!fs.existsSync(path.join(__dirname, '..', 'logs'))){
+            await fsPromises.mkdir(path.join(__dirname, '..', 'logs'));//telling it to go one directory up
         }
         await fsPromises.appendFile(path.join(__dirname, 'logs', logName), logItem)
         
