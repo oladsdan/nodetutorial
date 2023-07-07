@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const logEvents = require('./middleware/logEvents');
 const PORT = process.env.PORT || 3000;
 
 //custom middleware
 app.use((req, res, next) => {
+    logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`,'reqLog.txt')
     console.log(`${req.method} ${req.path}`)
     next();
 })
