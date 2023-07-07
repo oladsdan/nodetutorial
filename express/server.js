@@ -1,16 +1,32 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const logEvents = require('./middleware/logEvents');
+const cors = require('cors');
+const {logger} = require('./middleware/logEvents');
 const PORT = process.env.PORT || 3000;
 
 //custom middleware
-app.use((req, res, next) => {
-    logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`,'reqLog.txt')
-    console.log(`${req.method} ${req.path}`)
-    next();
-})
+// app.use((req, res, next) => {
+//     logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`,'reqLog.txt')
+//     console.log(`${req.method} ${req.path}`)
+//     next();
+// })
+app.use(logger);
+// we apply cors
+const whiteList = ['https://www.twitter.com', 'http://127.0.0.1:5500', 'http://localhost:3500']
+// we create a functions
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (whiteList.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by Cors'))
+        }
+    },
+    optionsSuccessStatus:200
+}
 
+app.use(cors());
 
 //Built in middleware to enable urlencoded data
 //in other words, form data

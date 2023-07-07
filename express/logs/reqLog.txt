@@ -14,3 +14,9 @@
 20230704	11:19:58	13fd3759-e49f-4be9-a2aa-9f30b6c76c45	/css/style.css	GET
 20230704	11:19:58	278d1802-02b2-489c-aa44-585c90c68011	/img/image.png	GET
 20230704	11:22:11	9c1debe2-391d-4e7d-9beb-2036ef4ce956	/defe	GET
+20230707	07:08:55	74b9f0bf-e0bf-4432-b982-e2f790177115	GET	undefined	/
+20230707	07:08:55	8cbb283d-7f6d-4bca-9fb5-d43d936c14d1	GET	undefined	/css/style.css
+20230707	07:08:55	21c48b98-7378-476c-88c6-65ecf192caed	GET	undefined	/img/image.png
+20230707	07:11:51	5790c728-c60f-4fa3-ae37-dfd00efa67ca	GET	undefined	/
+20230707	07:11:51	7bcc8e93-0749-4d28-97f9-1f91e5c5c926	GET	undefined	/css/style.css
+20230707	07:11:51	21a573dc-fb9b-468d-9714-719520a90eb3	GET	undefined	/img/image.png
