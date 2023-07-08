@@ -50,3 +50,5 @@
 20230708	17:03:40	82c76b46-0859-4d3c-98e6-9a16849295d6	GET	undefined	/css/style.css
 20230708	17:14:14	9688431f-0ef7-4920-9d9c-e62592fcab2a	GET	undefined	/subdir/d
 20230708	17:14:14	226104d8-a572-4429-a399-012da748e068	GET	undefined	/css/style.css
+20230708	17:16:57	d2214859-fa99-44a4-9647-c413950be6b6	GET	undefined	/subdir/d
+20230708	17:16:57	5cb3f23e-512c-45b4-a347-99eb045e565a	GET	undefined	/css/style.css

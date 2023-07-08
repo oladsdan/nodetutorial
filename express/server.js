@@ -43,6 +43,8 @@ app.use('/subdir', express.static(path.join(__dirname, '/public')))
 //using the router for express
 app.use('/', require('./routes/root'))
 app.use('/subdir', require('./routes/subdir'))
+// using an api
+app.use('/employees', require('./routes/api/employees'));
 
 /**
  * This is now in the root.js
