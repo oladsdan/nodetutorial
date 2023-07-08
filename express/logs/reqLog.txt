@@ -52,3 +52,15 @@
 20230708	17:14:14	226104d8-a572-4429-a399-012da748e068	GET	undefined	/css/style.css
 20230708	17:16:57	d2214859-fa99-44a4-9647-c413950be6b6	GET	undefined	/subdir/d
 20230708	17:16:57	5cb3f23e-512c-45b4-a347-99eb045e565a	GET	undefined	/css/style.css
+20230708	19:54:01	48306e86-3851-49be-a345-4d0bcbe54bea	GET	undefined	/employees
+20230708	19:54:30	72308447-b355-4bb3-a264-d04391c955cb	GET	undefined	/employees
+20230708	19:54:59	a6d399b3-2658-4c30-8921-d92cfc80c676	GET	undefined	/employees
+20230708	20:04:07	056610aa-e59e-4704-b6a0-fca383b6e51a	GET	undefined	/employees
+20230708	20:05:27	b67bcf82-df88-4690-9975-1dde7fb0841b	POST	undefined	/employees
+20230708	20:08:10	766703a5-42fa-4243-8960-4f46529574dc	GET	undefined	/employees
+20230708	20:10:06	8933d2cb-6c1b-4a92-b849-7ebbdea10b84	POST	undefined	/employees
+20230708	20:10:14	31ee3c24-5491-4562-a856-362ccebda8e0	GET	undefined	/employees
+20230708	20:10:23	d50e6d4d-72cb-47e7-9aa1-4aa9d54f55cb	POST	undefined	/employees
+20230708	20:11:53	25ef4396-c01c-4a52-b10c-1b11520a92b9	PUT	undefined	/employees
+20230708	20:13:48	b472ff28-947a-4a91-a1a7-208a0a8d0dc8	PUT	undefined	/employees
+20230708	20:14:32	f441dd9d-1ab6-4a65-803f-e49fbf4b9e63	PUT	undefined	/employees
