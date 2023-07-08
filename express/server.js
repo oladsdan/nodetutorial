@@ -39,6 +39,9 @@ app.use(express.json());
 //serve static files eg css, images, txt
 app.use(express.static(path.join(__dirname, '/public')));
 
+//using the router for express
+app.use('/subdir', require('./routes/subdir'))
+
 
 //defining the route in express
 // app.get('/', (req, res) => {
