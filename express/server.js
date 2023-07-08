@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const {logger} = require('./middleware/logEvents');
+const errorHandler = require('./middleware/errorHandler');
 const PORT = process.env.PORT || 3000;
 
 //custom middleware
@@ -17,7 +18,7 @@ const whiteList = ['https://www.twitter.com', 'http://127.0.0.1:5500', 'http://l
 // we create a functions
 const corsOptions = {
     origin: (origin, callback) => {
-        if (whiteList.indexOf(origin) !== -1) {
+        if (whiteList.indexOf(origin) !== -1 || !origin) {
             callback(null, true)
         } else {
             callback(new Error('Not allowed by Cors'))
@@ -62,9 +63,6 @@ app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 })
 // using a custom error
-app.use(function (err, req, res, next){
-    console.error(err.stack)
-    res.status(500).send(err.message); //server errror
-})
+app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`server running on Port ${PORT}`))
