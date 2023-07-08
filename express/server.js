@@ -62,7 +62,19 @@ app.get('/old-page', (req, res) => {
 app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 })
+
+//serving our 404 since app.get does not use regex but app.all uses
+app.all('*', (req, res)=> {
+    res.status(404)
+    if(req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404.html'));
+    } else if (req.accepts('json')){
+        res.json({error : "404 not found"});
+    } else {
+        res.type('txt').send("404 not found")
+    }
+})
 // using a custom error
 app.use(errorHandler)
 
-app.listen(PORT, () => console.log(`server running on Port ${PORT}`))
+app.listen(PORT, () => console.log(`server running on Port ${PORT}`)) 
