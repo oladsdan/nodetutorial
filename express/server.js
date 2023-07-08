@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const corsOptions = require('./config/corsOptions')
 const {logger} = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const PORT = process.env.PORT || 3000;
@@ -14,18 +15,18 @@ const PORT = process.env.PORT || 3000;
 // })
 app.use(logger);
 // we apply cors
-const whiteList = ['https://www.twitter.com', 'http://127.0.0.1:5500', 'http://localhost:3500']
-// we create a functions
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by Cors'))
-        }
-    },
-    optionsSuccessStatus:200
-}
+// const whiteList = ['https://www.twitter.com', 'http://127.0.0.1:5500', 'http://localhost:3500']
+// // we create a functions
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         if (whiteList.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true)
+//         } else {
+//             callback(new Error('Not allowed by Cors'))
+//         }
+//     },
+//     optionsSuccessStatus:200
+// }
 
 app.use(cors(corsOptions));
 
@@ -38,11 +39,11 @@ app.use(express.json());
 
 //serve static files eg css, images, txt
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/subdir', express.static(path.join(__dirname, '/public')))
+// app.use('/subdir', express.static(path.join(__dirname, '/public')))
 
 //using the router for express
 app.use('/', require('./routes/root'))
-app.use('/subdir', require('./routes/subdir'))
+// app.use('/subdir', require('./routes/subdir'))
 // using an api
 app.use('/employees', require('./routes/api/employees'));
 
