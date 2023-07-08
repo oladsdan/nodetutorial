@@ -2,3 +2,10 @@
     align-items: center;
     color: blue;
 }
+#error{
+    background: black;
+    color: white;
+    align-items: center;
+    transform: -50%;
+}
+

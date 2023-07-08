@@ -38,28 +38,34 @@ app.use(express.json());
 
 //serve static files eg css, images, txt
 app.use(express.static(path.join(__dirname, '/public')));
+app.use('/subdir', express.static(path.join(__dirname, '/public')))
 
 //using the router for express
+app.use('/', require('./routes/root'))
 app.use('/subdir', require('./routes/subdir'))
 
-
+/**
+ * This is now in the root.js
+ */
 //defining the route in express
 // app.get('/', (req, res) => {
 //the expresion below uses regex meaning 
-app.get('^/$|/index(.html)?', (req, res) => {
-    // res.send('Hello World!')
-    // res.sendFile('./views/index.html', {root: __dirname})
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-})
+// app.get('^/$|/index(.html)?', (req, res) => {
+//     // res.send('Hello World!')
+//     // res.sendFile('./views/index.html', {root: __dirname})
+//     res.sendFile(path.join(__dirname, 'views', 'index.html'));
+// })
 
-// also we can call another route by using
-app.get('/new-page', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
-})
-//getting a redirect
-app.get('/old-page', (req, res) => {
-    res.redirect(301, '/new-page'); //by default passes a 302 status code so we specify 301
-})
+// // also we can call another route by using
+// app.get('/new-page', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
+// })
+// //getting a redirect
+// app.get('/old-page', (req, res) => {
+//     res.redirect(301, '/new-page'); //by default passes a 302 status code so we specify 301
+// })
+/**End of th root.js */
+
 
 //we can do a default route to supply a custom 404
 app.get('/*', (req, res) => {
