@@ -45,6 +45,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/', require('./routes/root'));
 // app.use('/subdir', require('./routes/subdir'))
 app.use('/register', require('./routes/register'));
+//for the auth routes
+app.use('/auth', require('./routes/auth'));
 // using an api
 app.use('/employees', require('./routes/api/employees'));
 
