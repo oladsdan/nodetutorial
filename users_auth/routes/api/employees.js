@@ -5,6 +5,7 @@ const employeesController = require('../../controllers/employeesController')
 // const path = require('path');
 // const data = {};
 
+
 // data.employees = require('../../data/employees.json')
 
 // router.route('/')
@@ -35,6 +36,7 @@ const employeesController = require('../../controllers/employeesController')
 // })
 
 router.route('/')
+    // .get(employeesController.getAllEmployees)
     .get(employeesController.getAllEmployees)
     .post(employeesController.createNewEmployee)
     .put(employeesController.updateEmployee)

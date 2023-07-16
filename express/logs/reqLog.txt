@@ -138,3 +138,5 @@
 20230714	08:22:20	16155722-e0fb-4eaf-8b45-eef9d8e816c5	POST	undefined	/register
 20230714	08:24:00	fca676b4-25ea-45f1-93c2-b6153313e4f2	POST	undefined	/register
 20230714	08:24:49	707041f4-2977-44e8-9845-9e52d08e46dd	POST	undefined	/register
+20230716	11:16:06	46eaafd6-bb9a-44f8-8f27-99845f6ac148	POST	undefined	/auth%20
+20230716	11:16:20	43dd8b84-5997-4cff-a789-0c7d6899e539	POST	undefined	/auth

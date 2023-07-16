@@ -5,6 +5,7 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions')
 const {logger} = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
 const PORT = process.env.PORT || 3000;
 
 //custom middleware
@@ -47,6 +48,9 @@ app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/register'));
 //for the auth routes
 app.use('/auth', require('./routes/auth'));
+
+//so everything beneath uses the jwt
+app.use(verifyJWT)
 // using an api
 app.use('/employees', require('./routes/api/employees'));
 
