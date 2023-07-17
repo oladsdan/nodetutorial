@@ -53,6 +53,7 @@ app.use('/register', require('./routes/register'));
 //for the auth routes
 app.use('/auth', require('./routes/auth'));
 app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
 
 //so everything beneath uses the jwt
 app.use(verifyJWT)

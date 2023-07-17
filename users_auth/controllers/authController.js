@@ -40,7 +40,7 @@ const handleLogin = async (req, res) => {
         JSON.stringify(usersDB.users));
 
         // res.json({ 'success': `User ${user} is logged in`}); 
-        res.cookie('jwt', refreshToken, { httpOnly : true, message: 24 * 60 * 60* 1000} )
+        res.cookie('jwt', refreshToken, { httpOnly : true, maxAge: 24 * 60 * 60* 1000} )
         res.json({ accessToken });
 
     } else {
