@@ -7,6 +7,7 @@ const {logger} = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
 const PORT = process.env.PORT || 3000;
 
 //custom middleware
@@ -30,7 +31,9 @@ app.use(logger);
 //     optionsSuccessStatus:200
 // }
 
+app.use(credentials);
 app.use(cors(corsOptions));
+
 
 //Built in middleware to enable urlencoded data
 //in other words, form data
