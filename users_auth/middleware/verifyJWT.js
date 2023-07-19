@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const verifyJWT = (req, res, next) => {
     const authHeader = req.headers.authorization || req.heades.Authorization ;
-    if(!authHeader?.startsWith('Bearer')) return res.sendStatus(401);
+    if(!authHeader?.startsWith('Bearer ')) return res.sendStatus(401);
     // console.log(authHeader); // bearer token
     const token = authHeader.split(' ')[1];
     jwt.verify(
@@ -11,7 +11,8 @@ const verifyJWT = (req, res, next) => {
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
             if(err) return res.sendStatus(403); // invalid token
-            req.user = decoded.username;
+            req.user = decoded.UserInfo.username;
+            req.roles = decoded.UserInfo.roles
             next();
         }
     )

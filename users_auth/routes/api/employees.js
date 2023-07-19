@@ -4,6 +4,8 @@ const router = express.Router();
 const employeesController = require('../../controllers/employeesController')
 // const path = require('path');
 // const data = {};
+const Roles_List = require('../../config/roles_list');
+const verifyRoles = require('../../middleware/verifyRoles')
 
 
 // data.employees = require('../../data/employees.json')
@@ -37,9 +39,9 @@ const employeesController = require('../../controllers/employeesController')
 
 router.route('/')
     .get(employeesController.getAllEmployees)
-    .post(employeesController.createNewEmployee)
-    .put(employeesController.updateEmployee)
-    .delete(employeesController.deleteEmployee);
+    .post(verifyRoles(Roles_List.Admin, Roles_List.Editor), employeesController.createNewEmployee)
+    .put(verifyRoles(Roles_List.Admin, Roles_List.Editor), employeesController.updateEmployee)
+    .delete(verifyRoles(Roles_List.Admin), employeesController.deleteEmployee);
 
 router.route('/:id')
     .get(employeesController.getEmployee);
