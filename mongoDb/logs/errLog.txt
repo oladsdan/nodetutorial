@@ -1,0 +1,3 @@
+20230718	22:27:04	c81792c7-3006-4b67-8e3f-944457b72540	TypeError: Cannot read properties of undefined (reading 'Authorization')
+20230718	22:29:28	d62bd98d-1636-4895-9b4e-d473293eec4c	TypeError: rolesArray.includes(...).find is not a function
+20230718	22:29:31	6754de66-6398-4a58-83e7-c8c254cfb25b	TypeError: rolesArray.includes(...).find is not a function
