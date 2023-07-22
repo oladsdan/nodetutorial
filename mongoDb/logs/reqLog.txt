@@ -223,3 +223,4 @@
 20230718	22:32:15	456b9203-bc9c-4cce-a7a1-7beb8e669c73	POST	undefined	/auth
 20230718	22:32:28	1c48dcac-9276-48ad-90a9-7095b9803197	POST	undefined	/auth
 20230718	22:32:46	f567e15f-d588-4cd1-a271-e91237aaeaf2	POST	undefined	/employees
+20230722	12:16:57	e6d8d8f0-e80a-4f9a-a080-d2cb415f53f1	POST	undefined	/register
